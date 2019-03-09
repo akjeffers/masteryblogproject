@@ -32,11 +32,7 @@ public class PostController {
 	@Resource
 	TagsRepository tags;
 	
-	@GetMapping("/submit")
-	public String getPostPage() {
-		return "submit";
-	}
-
+	
 	@GetMapping("/submit")
 	public String post(Model model) {
 		model.addAttribute("posts", posts.findAll());
