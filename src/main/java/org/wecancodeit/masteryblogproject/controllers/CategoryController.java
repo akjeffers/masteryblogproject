@@ -1,4 +1,4 @@
-package org.wecancodeit.masteryproject.controllers;
+package org.wecancodeit.masteryblogproject.controllers;
 
 import javax.annotation.Resource;
 
@@ -6,13 +6,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.wecancodeit.masteryblogproject.repositories.AuthorsRepository;
 import org.wecancodeit.masteryblogproject.repositories.CategoriesRepository;
 import org.wecancodeit.masteryblogproject.repositories.PostsRepository;
 import org.wecancodeit.masteryblogproject.repositories.TagsRepository;
 
 @Controller
-public class TagController {
+@RequestMapping("/category")
+public class CategoryController {
+	
 	@Resource
 	AuthorsRepository authors;
 	@Resource
@@ -22,10 +25,18 @@ public class TagController {
 	@Resource
 	TagsRepository tags;
 	
-	@GetMapping ("/tag/{tagId}")
-	public String singleTag(@PathVariable Long tagId, Model model) {
-		model.addAttribute("post", posts.findAll());
-		model.addAttribute("tag", tags.findById(tagId).get());
-		return "tag";
-	}
+	@RequestMapping("")
+	public String viewCategory(Model model) {
+	model.addAttribute("categories", categories.findAll());
+	return "/category";
+	
 }
+	@GetMapping("/{categoryId}")
+	public String findOneCategory (@PathVariable Long categoryId, Model model) {
+		model.addAttribute("category", categories.findById(categoryId).get());
+		model.addAttribute("categories", categories.findAll());
+		return "category";
+	}
+	
+}
+

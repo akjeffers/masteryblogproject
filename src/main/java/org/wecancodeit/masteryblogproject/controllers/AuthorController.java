@@ -1,4 +1,4 @@
-package org.wecancodeit.masteryproject.controllers;
+package org.wecancodeit.masteryblogproject.controllers;
 
 import javax.annotation.Resource;
 
@@ -13,8 +13,8 @@ import org.wecancodeit.masteryblogproject.repositories.PostsRepository;
 import org.wecancodeit.masteryblogproject.repositories.TagsRepository;
 
 @Controller
-@RequestMapping("/category")
-public class CategoryController {
+@RequestMapping("/author")
+public class AuthorController {
 	
 	@Resource
 	AuthorsRepository authors;
@@ -26,17 +26,15 @@ public class CategoryController {
 	TagsRepository tags;
 	
 	@RequestMapping("")
-	public String viewCategory(Model model) {
-	model.addAttribute("categories", categories.findAll());
-	return "/category";
+	public String viewAuthor(Model model) {
+	model.addAttribute("authors",authors.findAll());
+	return "/author";
 	
 }
-	@GetMapping("/{categoryId}")
-	public String findOneCategory (@PathVariable Long categoryId, Model model) {
-		model.addAttribute("category", categories.findById(categoryId).get());
-		model.addAttribute("categories", categories.findAll());
-		return "category";
+	@GetMapping("/{authorId}")
+	public String findOneAuthor (@PathVariable Long authorId, Model model) {
+		model.addAttribute("author", authors.findById(authorId).get());
+		model.addAttribute("authors", authors.findAll());
+		return "author";
 	}
-	
 }
-

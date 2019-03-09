@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Codrz</title>
+</head>
+
+<body>
+
+
+  <!-- Header Area 
+      #top-header (.header-branding, )
+      #navbar (.nav-list, .nav-list--item) -->
+      
+  <header id="header">
+    <div id="top-header">
+      <h1 class="header-branding">Codrz</h1>
+      
+    </div>
+    <!--Close top-header-->
+
+    <div id="navbar">
+      <ul class="nav-list">
+        <li class="nav-list--item"><a href="/">Home</a></li>
+        <li class="nav-list--item"><a href="/">Authors</a></li>
+        <li class="nav-list--item"><a href="/">Write A Post</a></li>
+        
+        
+      </ul>
+    </div>
+    <!--Close navbar-->
+  </header>
+
+  <main>
+    <!--MAIN BODY THREE COLUMN GRID
+        #left-column ( Categories -- Front-end, Back-end, Full Stack )
+      #center-column ( Most Recent Blog Posts ) 
+      #right-column ( Tag List; Java, CSS, HTML5, Spring)-->
+    <div class="three-column grid">
+      <section id="left-column" class="sidebar">
+        <h2 class="bold section-title">Popular Styles</h2>
+        <div class="white-box">
+          <ul th:each="type : ${categories}">
+            <li><a th:text="${type.beerType}" th:href="@{|/category/${type.id}|}"></a></li>
+          </ul>
+        </div>
+      </section>
+      <!--Close left-column-->
+      <section id="center-column">
+        <h2 class="bold section-title">Submit a Review</h2>
+        <div class="column-reverse">
+          <article class="white-box">
+            <form action="/review/submit" method="POST">
+              <ul class="form-list">
+                <div class="margin-bottom">
+                  <li class="form-list--item">
+                    <p>Title</p>
+                  </li>
+                  <li class="form-list--item"><input class="review-input" type="text" placeholder="ex: Java For Beginners"
+                      name="beerName">
+                  </li>
+                </div>
+                <div class="margin-bottom">
+                  <li class="form-list--item">
+                    <p>Author</p>
+                  </li>
+                  <li class="form-list--item"><input type="text" placeholder="ex: Alicia Jeffers" name="author">
+                    </p>
+                  </li>
+                </div>
+
+                <div class="margin-bottom">
+                  <li class="form-list--item">
+                    <p>Category</p>
+                  </li>
+                  <li class="form-list--item"><input type="text" placeholder="ex: Front-end" name="progType"></p>
+                  </li>
+                </div>
+
+            <!-- Enter Date input -->
+            <form th:action="@{|/tags/${Tag.tagId}/add|}" method="POST">
+                <select name="postId">
+                    <option th:each="review : ${AllReviews}" th:value="${review.id}" th:text="|Ease of Use: ${review.easeOfUseRating}, Aesthetics: ${review.aestheticsRating},
+                        Content: ${review.contentRating}, Creativity: ${review.creativityRating},
+                        Overall: ${review.overallRating}, Comment: ${review.overallComment}|">
+                    </option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+
+
+                
+                <div class="margin-bottom">
+                  <li class="form-list--item">
+                    <p>Write Content Here 
+                  </li>
+                  <li class="form-list--item"><textarea class="input-review-body" type="text" name="body"></textarea>
+                  </li>
+                </div>
+                <div class="margin-bottom">
+                  <li class="form-list--item"> <button type="submit">Submit</button></li>
+                </div>
+              </ul>
+            </form>
+          </article>
+
+        </div>
+      </section>
+      <!--Close center-column-->
+
+      <section id="right-column" class="sidebar">
+        <h2 class="bold section-title">Stuff Right</h2>
+        <div class="white-box">
+          <p>Right</p>
+        </div>
+      </section>
+    </div>
+    <!--Close three-column-grid-->
+
+    <footer><small>footer</small></footer>
+  </main>
+</body>
+
+</html>

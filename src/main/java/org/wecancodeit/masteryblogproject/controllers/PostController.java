@@ -1,4 +1,4 @@
-package org.wecancodeit.masteryproject.controllers;
+package org.wecancodeit.masteryblogproject.controllers;
 
 import java.util.Optional;
 
@@ -31,6 +31,11 @@ public class PostController {
 	CategoriesRepository categories;
 	@Resource
 	TagsRepository tags;
+	
+	@GetMapping("/submit")
+	public String getPostPage() {
+		return "submit";
+	}
 
 	@GetMapping("/submit")
 	public String post(Model model) {
@@ -39,7 +44,9 @@ public class PostController {
 		model.addAttribute("categories", categories.findAll());
 		model.addAttribute("tags", tags.findAll());
 		return "submit";
+		
 	}
+
 
 	@PostMapping("/submit")
 	public String postSubmit(Author author, String title, String date, String body, Category progType, Tag[] tagName) {

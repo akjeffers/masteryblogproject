@@ -6,28 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>MasteryBlog Project</title>
+  <title>Codrz</title>
 </head>
 
 <body>
 
 
   <!-- Header Area 
-      #top-header (.branding, .log-in-list)
+      #top-header (.header-branding, )
       #navbar (.nav-list, .nav-list--item) -->
       
   <header id="header">
     <div id="top-header">
-      <h1 class="header-branding">MasteryBlog Project</h1>
+      <h1 class="header-branding">Codrz</h1>
       
     </div>
     <!--Close top-header-->
 
     <div id="navbar">
       <ul class="nav-list">
-        <li class="nav-list--item"><a href="/">Home</a></li>
-        <li class="nav-list--item"><a href="/">Authors</a></li>
-        <li class="nav-list--item"><a href="/">Write A Post</a></li>
+        <li><a class="nav-list--item" href="/">Home</a></li>
+        <li><a class="nav-list--item" href="/contact">Authors</a></li>
+        <li><a class="nav-list--item" href="/post/submit">Write A Post</a></li>
+  		
+        
       </ul>
     </div>
     <!--Close navbar-->
@@ -38,39 +40,38 @@
       #left-column ( Categories -- Front-end, Back-end, Full Stack )
       #center-column ( Most Recent Blog Posts ) 
       #right-column ( Tag List; Java, CSS, HTML5, Spring)-->
-    <div class="three-column grid">
+   <!-- <div class="three-column grid">
       <section id="left-column" class="sidebar">
         <h2 class="bold section-title">Categories</h2>
         <div class="white-box">
           <ul th:each="type : ${categories}">
-            <li><a th:text="${type.category}" th:href="@{|/category/${type.id}|}"></a></li>
+            <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>
           </ul>
         </div>
-      </section>
-      <!--Close left-column-->
+      </section> 
+      <!- Close left-column-->
 
 
-      <section id="center-column">
+       <section id="center-column">
         <h2 class="bold section-title">Latest Posts</h2>
         <div class="column-reverse">
-          <article class="white-box" th:each="post : ${posts}">
+          <article class="white-box" th:each="post : ${posts}"> 
 
 
-            <h2 class="article-header" th:text="${review.beer.beerName}">Chasing Mirrors</h2>
+             <h2 class="article-header" th:text="${post.title}">Beginner Steps in Java </h2>
             <div class="two-column grid">
               <div class="grid--left">
-                <h3 th:text="|Brewed by: ${review.post.brewery}|">Brewed by: Wylam</h3>
-                  <h4 th:text="|Style: ${review.post.beerType}|">Style: IPA</h4>
-                    <h3 th:text="${review.title}">Delicious IPA from Whylan</h3>
-                   
+                <h3 th:text="|Authored by: ${post.authorName}|">Authored by: Jason Hochheiser</h3>
+                  <h4 th:text="|Category: ${post.category.progType}|">Back-End</h4>
+                    <!-- <h3 th:text="${title}">Delicious IPA from Whylan</h3> -->
+                    
                
-                    <a class="article-subheader" th:href="@{|post/${post.id}|}">
+                    <a class="article-subheader" th:href="@{|post/${post.postId}|}">
                       Read Blog Post</a>
               </div>
 
               <div class="grid--right">
-                <figure class="tags"><img th:src="${review.beer.imgUrl}" alt="user submitted image of beer">
-                </figure>
+                <figure class="tags"> <!-- Build out tags on right side column *List -->
               </div>
             </div>
             <!-- Two Column Grid-->
@@ -78,10 +79,11 @@
 
 
               <!--Delete Posts -->
-              <form th:action="@{/deletePost}" method="POST">
-                <input type="hidden" name="id" th:value="${post.id}">
-                <button class="fading-button" type="submit"><img src="/images/delete-icon.svg" alt="submit" /></button>
-                <small>Delete the post</small>
+              <!-- <form th:action="@{/deletePost}" method="POST">
+                <input type="hidden" name="postId" th:value="${post.postId}">
+                <button class="fading-button" type="submit">Delete</button> -->
+                <!-- <img src="/images/delete-icon.svg" alt="submit" /> -->
+                <!-- <small>Delete the post</small> -->
               </form>
             </div>
 
@@ -98,7 +100,7 @@
         </div>
       </section>
     </div>
-    <!--Close three-column-grid-->
+    <!-- Close three-column-grid --> 
 
     <footer><small>&copy; 2019 Hochheiser & Wyandt</small></footer>
   </main>

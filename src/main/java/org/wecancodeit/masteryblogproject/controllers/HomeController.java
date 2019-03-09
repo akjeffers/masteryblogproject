@@ -1,4 +1,4 @@
-package org.wecancodeit.masteryproject.controllers;
+package org.wecancodeit.masteryblogproject.controllers;
 
 import javax.annotation.Resource;
 
@@ -16,7 +16,7 @@ import org.wecancodeit.masteryblogproject.repositories.TagsRepository;
 
 @Controller
 public class HomeController {
-	
+
 	@Resource
 	PostsRepository posts;
 	@Resource
@@ -25,8 +25,8 @@ public class HomeController {
 	CategoriesRepository categories;
 	@Resource
 	TagsRepository tags;
-	
-	@RequestMapping("/")
+
+	@GetMapping("/")
 	public String home(Model model) {
 		model.addAttribute("posts", posts.findAll());
 		model.addAttribute("authors", authors.findAll());
@@ -34,24 +34,33 @@ public class HomeController {
 		model.addAttribute("tags", tags.findAll());
 		return "home";
 	}
+
+	@GetMapping("/contact")
+	public String getContact() {
+		return "contact";
+	}
+
 	@GetMapping("/{categoryId}")
 	public String progOfSelectedType(@PathVariable Long categoryId, Model model) {
 		model.addAttribute("categories", categories.findAll());
 		return "category";
 	}
+
 	@GetMapping("/{authorId}")
 	public String postsBySelectedAuthor(@PathVariable Long authorId, Model model) {
 		model.addAttribute("authors", authors.findAll());
 		return "author";
 	}
+
 	@GetMapping("/{tagId}")
 	public String postsBySelectedTag(@PathVariable Long tagId, Model model) {
 		model.addAttribute("tags", tags.findAll());
 		return "tag";
 	}
+
 	@PostMapping("/deletePost")
 	public String deletePost(Long postId) {
-	Post post = (Post) posts.findById(postId).get();
+		Post post = (Post) posts.findById(postId).get();
 		posts.deleteById(postId);
 		return "redirect:/";
 	}
