@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -19,15 +20,16 @@ public class Post {
 	@GeneratedValue
 	private Long postId;
 	
-	@ManyToOne
+	@ManyToMany
 	private List<Author> author;
 	
-	@OneToMany(mappedBy="post")
+	@ManyToMany
 	private Collection<Tag> tags;
 	@Lob
 	private String title;
 	private String date;
 	private String body;
+	@ManyToOne
 	private Category category;
 	
 	public Post() {}

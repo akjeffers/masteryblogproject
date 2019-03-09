@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
@@ -13,7 +14,7 @@ public class Category {
 	@GeneratedValue
 	private Long categoryId;
 	private String progType;
-	@ManyToOne
+	@OneToMany(mappedBy="category")
 	private Collection<Post> posts;
 	
 	public Category() {}
