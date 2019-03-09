@@ -26,7 +26,7 @@ public class HomeController {
 	@Resource
 	TagsRepository tags;
 
-	@GetMapping("/")
+	@RequestMapping("/")
 	public String home(Model model) {
 		model.addAttribute("posts", posts.findAll());
 		model.addAttribute("authors", authors.findAll());
@@ -41,20 +41,20 @@ public class HomeController {
 	}
 
 	@GetMapping("/{categoryId}")
-	public String progOfSelectedType(@PathVariable Long categoryId, Model model) {
-		model.addAttribute("categories", categories.findAll());
+	public String postOfSelectedProgType(@PathVariable Long categoryId, Model model) {
+		model.addAttribute("posts", posts.findAll());
 		return "category";
 	}
 
 	@GetMapping("/{authorId}")
 	public String postsBySelectedAuthor(@PathVariable Long authorId, Model model) {
-		model.addAttribute("authors", authors.findAll());
+		model.addAttribute("posts", posts.findAll());
 		return "author";
 	}
 
 	@GetMapping("/{tagId}")
 	public String postsBySelectedTag(@PathVariable Long tagId, Model model) {
-		model.addAttribute("tags", tags.findAll());
+		model.addAttribute("posts", posts.findAll());
 		return "tag";
 	}
 

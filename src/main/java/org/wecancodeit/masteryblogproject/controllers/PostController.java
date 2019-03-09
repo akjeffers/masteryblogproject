@@ -1,5 +1,6 @@
 package org.wecancodeit.masteryblogproject.controllers;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -45,7 +46,7 @@ public class PostController {
 
 
 	@PostMapping("/submit")
-	public String postSubmit(Author author, String title, String date, String body, Category progType, Tag[] tagName) {
+	public String postSubmit(Author author, String title, String body, Category progType, Tag[] tagName) {
 //		Category categoryToMake = categories.findByProgType(progType);
 //		if (categoryToMake == null) {
 //			categoryToMake = categories.save(new Category(progType));
@@ -53,10 +54,10 @@ public class PostController {
 //		categoryToMake = categories.save(categoryToMake);
 //		Author authorToMake = authors.findByAuthorName(author);
 //		if (authorToMake == null) {
-//			authorToMake = authors.save(new Author(author));
+//			authorToMake = authors.save(new Author(author));,
 //		}
 //		authorToMake = authors.save(authorToMake);
-		posts.save(new Post(author, title, date, body, progType, tagName));
+		posts.save(new Post(author, title, body, progType, tagName));
 		return "redirect:/";
 
 	}

@@ -1,11 +1,14 @@
 package org.wecancodeit.masteryblogproject;
 
+import java.time.LocalDateTime;
+
 import javax.annotation.Resource;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import org.wecancodeit.masteryblogproject.models.Author;
 import org.wecancodeit.masteryblogproject.models.Category;
+import org.wecancodeit.masteryblogproject.models.Post;
 import org.wecancodeit.masteryblogproject.models.Tag;
 import org.wecancodeit.masteryblogproject.repositories.AuthorsRepository;
 import org.wecancodeit.masteryblogproject.repositories.CategoriesRepository;
@@ -32,8 +35,15 @@ public class Initializer implements CommandLineRunner {
 		Tag tag1 = tags.save(new Tag("HTML", null));
 		Tag tag2 = tags.save(new Tag("CSS", null));
 		Tag tag3 = tags.save(new Tag("JavaScript", null));
+		Tag tag4 = tags.save(new Tag("Java", null));
+		Post post1 = posts.save(new Post(author1, "First Programming Blog", 
+				"This is the body of my first blog", fullStack, tag3));
 		
+		Post post2 = posts.save(new Post(author2, "Another Programming Blog", 
+				"This blog is about CSS.", frontEnd, tag2));
 		
+		Post post3 = posts.save(new Post(author1, "Front End Programming", 
+				"This blog is about Java.", backEnd, tag4));
 		
 		
 	}
