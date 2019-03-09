@@ -5,7 +5,9 @@ import org.wecancodeit.masteryblogproject.models.Author;
 
 public interface AuthorsRepository extends CrudRepository<Author, Long>{
 
-	Author findByAuthorName(String authorName);
+	Author findByAuthorName(Author author);
+
+	Author save(Author author);
 	
 
 }

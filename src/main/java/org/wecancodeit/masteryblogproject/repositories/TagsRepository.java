@@ -1,5 +1,10 @@
 package org.wecancodeit.masteryblogproject.repositories;
 
-public class TagsRepository {
+import org.springframework.data.repository.CrudRepository;
+import org.wecancodeit.masteryblogproject.models.Tag;
+
+public interface TagsRepository extends CrudRepository<Tag, Long>{
+
+	Tag save(Tag tag);
 
 }

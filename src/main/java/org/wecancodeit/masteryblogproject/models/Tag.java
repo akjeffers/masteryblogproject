@@ -18,8 +18,10 @@ public class Tag {
 	
 	public Tag() {}
 	
-	public Tag(String stringOfTags) {
+	public Tag(String stringOfTags, Post post) {
 		this.tagName = stringOfTags;
+		this.posts = (Collection<Post>) post;
+	
 	}
 
 	public Long getId() {
@@ -42,7 +44,9 @@ public class Tag {
 	public String toString() {
 		return "Tag [id=" + id + ", tagName=" + tagName + "]";
 	}
+
 	
+
 	
 
 }

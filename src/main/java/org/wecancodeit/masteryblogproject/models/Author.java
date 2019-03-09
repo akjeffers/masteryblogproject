@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -12,14 +13,14 @@ public class Author {
 	@Id
 	@GeneratedValue
 	private Long authorId;
-	private String authorName;
-	@OneToMany(mappedBy="author")
+	private Author authorName;
+	@ManyToMany(mappedBy="author")
 	private Collection<Post> posts;
 	
 	public Author () {}
 	
-	public Author(String authorName) {
-		this.authorName = authorName;
+	public Author(Author author) {
+		this.authorName = author;
 	}
 
 	@Override
@@ -31,7 +32,7 @@ public class Author {
 		return authorId;
 	}
 
-	public String getAuthorName() {
+	public Author getAuthorName() {
 		return authorName;
 	}
 

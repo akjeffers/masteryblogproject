@@ -1,5 +1,8 @@
 package org.wecancodeit.masteryblogproject.repositories;
 
-public class PostsRepository {
+import org.springframework.data.repository.CrudRepository;
+import org.wecancodeit.masteryblogproject.models.Post;
+
+public interface PostsRepository extends CrudRepository<Post, Long>{
 
 }
