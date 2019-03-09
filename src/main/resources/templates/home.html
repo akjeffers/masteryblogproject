@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>MasteryBlog Project</title>
+</head>
+
+<body>
+
+
+  <!-- Header Area 
+      #top-header (.branding, .log-in-list)
+      #navbar (.nav-list, .nav-list--item) -->
+      
+  <header id="header">
+    <div id="top-header">
+      <h1 class="header-branding">MasteryBlog Project</h1>
+      
+    </div>
+    <!--Close top-header-->
+
+    <div id="navbar">
+      <ul class="nav-list">
+        <li class="nav-list--item"><a href="/">Home</a></li>
+        <li class="nav-list--item"><a href="/">Authors</a></li>
+        <li class="nav-list--item"><a href="/">Write A Post</a></li>
+      </ul>
+    </div>
+    <!--Close navbar-->
+  </header>
+
+  <main>
+    <!--MAIN BODY THREE COLUMN GRID
+      #left-column ( Categories -- Front-end, Back-end, Full Stack )
+      #center-column ( Most Recent Blog Posts ) 
+      #right-column ( Tag List; Java, CSS, HTML5, Spring)-->
+    <div class="three-column grid">
+      <section id="left-column" class="sidebar">
+        <h2 class="bold section-title">Categories</h2>
+        <div class="white-box">
+          <ul th:each="type : ${categories}">
+            <li><a th:text="${type.category}" th:href="@{|/category/${type.id}|}"></a></li>
+          </ul>
+        </div>
+      </section>
+      <!--Close left-column-->
+
+
+      <section id="center-column">
+        <h2 class="bold section-title">Latest Posts</h2>
+        <div class="column-reverse">
+          <article class="white-box" th:each="post : ${posts}">
+
+
+            <h2 class="article-header" th:text="${review.beer.beerName}">Chasing Mirrors</h2>
+            <div class="two-column grid">
+              <div class="grid--left">
+                <h3 th:text="|Brewed by: ${review.post.brewery}|">Brewed by: Wylam</h3>
+                  <h4 th:text="|Style: ${review.post.beerType}|">Style: IPA</h4>
+                    <h3 th:text="${review.title}">Delicious IPA from Whylan</h3>
+                   
+               
+                    <a class="article-subheader" th:href="@{|post/${post.id}|}">
+                      Read Blog Post</a>
+              </div>
+
+              <div class="grid--right">
+                <figure class="tags"><img th:src="${review.beer.imgUrl}" alt="user submitted image of beer">
+                </figure>
+              </div>
+            </div>
+            <!-- Two Column Grid-->
+            <div class="two-column article-footer">
+
+
+              <!--Delete Posts -->
+              <form th:action="@{/deletePost}" method="POST">
+                <input type="hidden" name="id" th:value="${post.id}">
+                <button class="fading-button" type="submit"><img src="/images/delete-icon.svg" alt="submit" /></button>
+                <small>Delete the post</small>
+              </form>
+            </div>
+
+          </article>
+        </div>
+      </section>
+      <!--Close center-column-->
+   		<h3>Programming Types</h3>
+      <section id="right-column" class="sidebar">
+        <h2 class="bold section-title">Topics</h2>
+        <div class="white-box">
+        
+         
+        </div>
+      </section>
+    </div>
+    <!--Close three-column-grid-->
+
+    <footer><small>&copy; 2019 Hochheiser & Wyandt</small></footer>
+  </main>
+</body>
+
+</html>
