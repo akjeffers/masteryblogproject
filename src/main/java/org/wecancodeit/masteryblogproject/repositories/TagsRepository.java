@@ -7,4 +7,7 @@ public interface TagsRepository extends CrudRepository<Tag, Long>{
 
 	Tag save(Tag tag);
 
+	Tag findByTagName(String tagName);
+	
+
 }

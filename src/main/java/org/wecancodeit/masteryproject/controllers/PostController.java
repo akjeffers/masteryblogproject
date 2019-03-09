@@ -67,16 +67,11 @@ public class PostController {
 		return "post";
 	}
 	@PostMapping("/{postId}")
-	public Tag tagSubmit(@PathVariable Long tagId, String tag) {
-		Long postId;
-		Post post = posts.findById(postId).get();
-		String tagName;
-		Tag tags = tags.add(new Tag(tagName, post));
-		post.addTag(tag);
-		
-		
-		
-		return tag;
+	public String postSubmit(@PathVariable Long tagId, Author author, String progType,String tagName) {
+		Author author1 = authors.findByAuthorName(author);
+		Category category = categories.findByProgType(progType);
+		Tag tag1 = tags.findByTagName(tagName);
+		return "/post";
 	
 	}
 }
