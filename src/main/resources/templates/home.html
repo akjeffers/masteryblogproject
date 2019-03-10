@@ -26,9 +26,11 @@
 
     <div id="navbar">
       <ul class="nav-list">
-        <li><a class="nav-list--item" href="/">Home</a></li>
-        <li><a class="nav-list--item" href="/contact">Authors</a></li>
-        <li><a class="nav-list--item" href="/post/submit">Write A Post</a></li>
+        <li><a class="nav-list--item" href="/">Home</a></li> <!-- Go Home -->
+        <li><a class="nav-list--item" href="/contact">Authors</a></li> <!-- Add Author Tags to Access Posts w Author -->
+        <li><a class="nav-list--item" href="/post/submit">Submit Blog Post</a></li> <!-- Go to page to submit a blog post -->
+        <li><a class="nav-list--item" href="/">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
+        <li><a class="nav-list--item" href="/">View Categories</a></li> <!-- Front End, Back-end -->
 
 
       </ul>
@@ -108,11 +110,14 @@
         </div>
       </section>
       <!--Close center-column-->
-   		<h3>Programming Tags</h3>
-      <section id="right-column" class="sidebar">
+   	
+    <section id="right-column" class="sidebar">
+      <h3 class="bold section-title">Programming Tags</h3>
+      <div class="white-box">
         <ul th:each="type : ${tags}">
           <li><a th:text="${type.tagName}" th:href="@{|/tag/${type.id}|}"></a></li>
         </ul>
+      </div>
       
        
       </section>
