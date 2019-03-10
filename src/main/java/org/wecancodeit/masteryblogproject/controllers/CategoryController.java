@@ -40,7 +40,7 @@ public class CategoryController {
 		Optional<Category> category = categories.findById(categoryId);
 		
 		model.addAttribute("category", categories.findById(categoryId).get());
-		return "categories/singleCategory";
+		return "/categories/singleCategory";
 	}
 	@PostMapping("/")
 	public String addCategory(String progType) {

@@ -37,12 +37,12 @@ public class TagController {
 			throw new Exception("The tag you're looking for does not exist");
 		}
 
-		return "tags/singleTag";
+		return "/tags/singleTag";
 }
 	@GetMapping("/")
 	public String getAllTags(Model model) {
 		model.addAttribute("tags", tags.findAll());
-		return "tags/allTags";
+		return "/tags/allTags";
 		
 		
 	}
@@ -53,7 +53,7 @@ public class TagController {
 			tagToAdd = tags.save(new Tag(tagName));
 		}
 		
-		return "redirect:/tags/";
+		return "redirect:/tags";
 		
 	}
 }

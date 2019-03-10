@@ -20,7 +20,7 @@ import org.wecancodeit.masteryblogproject.repositories.PostsRepository;
 import org.wecancodeit.masteryblogproject.repositories.TagsRepository;
 
 @Controller
-@RequestMapping("/posts")
+@RequestMapping("/post")
 public class PostController {
 
 	@Resource
@@ -33,18 +33,18 @@ public class PostController {
 	TagsRepository tags;
 	
 	
-	@GetMapping("/")
+	@GetMapping("/submit")
 	public String allPosts(Model model) {
 		model.addAttribute("posts", posts.findAll());
 		model.addAttribute("authors", authors.findAll());
 		model.addAttribute("categories", categories.findAll());
 		model.addAttribute("tags", tags.findAll());
-		return "posts/allPosts";
+		return "submit";
 		
 	}
 	
 
-	@PostMapping("/")
+	@PostMapping("/submit")
 	public String postSubmit(String authorName, String title, String body, String progType, String tagName) {
 		Category category = categories.findByProgType(progType);
 		Author author = authors.findByAuthorName(authorName);
@@ -54,7 +54,7 @@ public class PostController {
 
 	}
 
-	@GetMapping("/post/{postId}")
+	@GetMapping("/{postId}")
 	public String singlePost(@PathVariable Long postId, Model model) throws Exception {
 		Optional<Post> post = posts.findById(postId);
 		if(post.isPresent()) {
@@ -62,7 +62,7 @@ public class PostController {
 		} else {
 			throw new Exception("Post does not exist");
 		}
-		return "posts/singlePost";
+		return "post";
 		
 	}
 	@PostMapping("/{postId}")
@@ -70,7 +70,7 @@ public class PostController {
 		Post post = posts.findById(postId).get();
 		Tag tag = tags.save(new Tag());
 		post.addTagToTags(tag);
-		return "/post";
+		return "redirect:/post/";
 	
 	}
 }

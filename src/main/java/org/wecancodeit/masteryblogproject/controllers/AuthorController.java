@@ -44,7 +44,7 @@ public class AuthorController {
 			throw new Exception("Author does not exist");
 		}
 
-		return "authors/singleAuthor";
+		return "/authors/singleAuthor";
 
 	}
 	@PostMapping("/")

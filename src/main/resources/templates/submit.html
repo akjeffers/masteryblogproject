@@ -5,21 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
   <title>Codrz</title>
 </head>
 
 <body>
 
 
-  <!-- Header Area 
+  <!-- Header Area
       #top-header (.header-branding, )
       #navbar (.nav-list, .nav-list--item) -->
-      
+
   <header id="header">
     <div id="top-header">
       <h1 class="header-branding">Codrz</h1>
-      
+
     </div>
     <!--Close top-header-->
 
@@ -41,50 +42,43 @@
   <main>
     <!--MAIN BODY THREE COLUMN GRID
         #left-column ( Categories -- Front-end, Back-end, Full Stack )
-      #center-column ( Most Recent Blog Posts ) 
+      #center-column ( Most Recent Blog Posts )
       #right-column ( Tag List; Java, CSS, HTML5, Spring)-->
-    <!-- <div class="three-column grid">
+    <div class="three-column grid">
       <section id="left-column" class="sidebar">
         <h2 class="bold section-title">Categories</h2>
         <div class="white-box"> -->
-          <!-- <ul th:each="type : ${categories}">
+           <ul th:each="type : ${categories}">
             <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>
-          </ul> 
-        </div> -->
-      </section> 
-      
+          </ul>
+        </div>
+      </section>
+
       <!--Close left-column-->
       <section id="center-column">
-        <h2 class="bold section-title">Submit a Review</h2>
+        <h2 class="bold section-title">Submit a Blog</h2>
         <div class="column-reverse">
           <article class="white-box">
-            <form action="/review/submit" method="POST">
-              <ul class="form-list">
-                <div class="margin-bottom">
-                  <li class="form-list--item">
-                    <p>Title</p>
-                  </li>
-                  <li class="form-list--item"><input class="review-input" type="text" placeholder="ex: Java For Beginners"
-                      name="beerName">
-                  </li>
-                </div>
-                <div class="margin-bottom">
-                  <li class="form-list--item">
-                    <p>Author</p>
-                  </li>
-                  <li class="form-list--item"><input type="text" placeholder="ex: Alicia Jeffers" name="author">
-                    </p>
-                  </li>
-                </div>
-
-                <div class="margin-bottom">
-                  <li class="form-list--item">
-                    <p>Category</p>
-                  </li>
-                  <li class="form-list--item"><input type="text" placeholder="ex: Front-end" name="progType"></p>
-                  </li>
-                </div>
-
+        <form class="form" action="/post/addPost" method="post">
+           <fieldset class="field-set">
+               Title: <input type="text" name="title" /> <br />
+               Body: <input type="text" name="body" /> <br />
+               Author: <select name="authorId">
+                   <option th:each="author : ${authors}" th:value="${author.authorId}" th:text="|Name: ${author.authorName}|">
+                   </option>
+               </select> <br />
+               Genre: <select name="categoryId">
+                   <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="|Topic: ${category.progType}|">
+                   </option>
+               </select> <br />
+               Tag: <select name="tagId">
+                   <option th:each="tag : ${tags}" th:value="${tag.id}" th:text="|Name: ${tag.tagName}|">
+                   </option>
+               </select>
+           </fieldset>
+           <button type="submit">Submit</button>
+       </form>
+     </section>
             <!-- Enter Date input
             <form th:action="@{|/tags/${Tag.tagId}/add|}" method="POST">
                 <select name="postId">
@@ -97,10 +91,10 @@
             </form> -->
 
 
-                
+
                 <!-- <div class="margin-bottom">
                   <li class="form-list--item">
-                    <p>Write Content Here 
+                    <p>Write Content Here
                   </li>
                   <li class="form-list--item"><textarea class="input-review-body" type="text" name="body"></textarea>
                   </li>
