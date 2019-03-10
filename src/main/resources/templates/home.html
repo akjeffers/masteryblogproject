@@ -80,13 +80,14 @@
           <article class="white-box" th:each="post : ${posts}">
 
 
-            <h2 class="article-header" th:text="${post.title}">Beginner Steps in Java </h2>
+            <h2 class="article-header" th:text="${post.title}"> Beginner Steps in Java </h2>
             <div class="two-column grid">
               <div class="grid--left">
-                <h3 th:text="|Authored by: ${post.author}|">Authored by: Jason Hochheiser</h3>
+               <div th:each="Author: ${post.authors}"><h3 th:text="|Authored by: ${Author.authorName}|">Authored by: Jason Hochheiser</h3></div>
                   <!-- <h4 th:text="|Topic: ${post.progType}|">Topic: Back-End</h4> -->
-                <h4 th:each="type : ${categories}" th:text="|Topic: ${type.progType}|"
-                  th:href="@{|/category/${type.categoryId}|}">Back-End</h4>
+                
+               <h3 th:text="|Topics by: ${post.category.progType}|">Front-End Programming</h3>
+                 
                 <!-- <h3 th:text="${title}">Delicious IPA from Whylan</h3> -->
                 <!-- <ul th:each="type : ${categories}">
                       <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>

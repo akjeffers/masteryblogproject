@@ -34,6 +34,8 @@ public class Post {
 	@ManyToOne
 	private Category category;
 	
+	
+
 	public Post() {}
 	
 	public Post(Author authorName, String title, String body, Category category, Tag tags) {
@@ -62,7 +64,9 @@ public class Post {
 	public String getTitle() {
 		return title;
 	}
-
+	public Category getCategory() {
+		return category;
+	}
 	public LocalDateTime getDate() {
 		return LocalDateTime.now();
 	}
