@@ -25,11 +25,14 @@
 
     <div id="navbar">
       <ul class="nav-list">
-        <li class="nav-list--item"><a href="/">Home</a></li>
-        <li class="nav-list--item"><a href="/">Authors</a></li>
-        <li class="nav-list--item"><a href="/">Write A Post</a></li>
-        
-        
+        <li><a class="nav-list--item" href="/">Home</a></li> <!-- Go Home -->
+        <li><a class="nav-list--item" href="/contact">Authors</a></li> <!-- Add Author Tags to Access Posts w Author -->
+        <li><a class="nav-list--item" href="/post/submit">Submit Blog Post</a></li>
+        <!-- Go to page to submit a blog post -->
+        <li><a class="nav-list--item" href="/">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
+        <li><a class="nav-list--item" href="/">View Categories</a></li> <!-- Front End, Back-end -->
+
+
       </ul>
     </div>
     <!--Close navbar-->
@@ -40,15 +43,16 @@
         #left-column ( Categories -- Front-end, Back-end, Full Stack )
       #center-column ( Most Recent Blog Posts ) 
       #right-column ( Tag List; Java, CSS, HTML5, Spring)-->
-    <div class="three-column grid">
+    <!-- <div class="three-column grid">
       <section id="left-column" class="sidebar">
-        <h2 class="bold section-title">Popular Styles</h2>
-        <div class="white-box">
-          <ul th:each="type : ${categories}">
-            <li><a th:text="${type.beerType}" th:href="@{|/category/${type.id}|}"></a></li>
-          </ul>
-        </div>
-      </section>
+        <h2 class="bold section-title">Categories</h2>
+        <div class="white-box"> -->
+          <!-- <ul th:each="type : ${categories}">
+            <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>
+          </ul> 
+        </div> -->
+      </section> 
+      
       <!--Close left-column-->
       <section id="center-column">
         <h2 class="bold section-title">Submit a Review</h2>
@@ -81,7 +85,7 @@
                   </li>
                 </div>
 
-            <!-- Enter Date input -->
+            <!-- Enter Date input
             <form th:action="@{|/tags/${Tag.tagId}/add|}" method="POST">
                 <select name="postId">
                     <option th:each="review : ${AllReviews}" th:value="${review.id}" th:text="|Ease of Use: ${review.easeOfUseRating}, Aesthetics: ${review.aestheticsRating},
@@ -90,11 +94,11 @@
                     </option>
                 </select>
                 <button type="submit">Submit</button>
-            </form>
+            </form> -->
 
 
                 
-                <div class="margin-bottom">
+                <!-- <div class="margin-bottom">
                   <li class="form-list--item">
                     <p>Write Content Here 
                   </li>
@@ -110,18 +114,18 @@
 
         </div>
       </section>
-      <!--Close center-column-->
+      <!- Close center-column -->
 
-      <section id="right-column" class="sidebar">
+      <!-- <section id="right-column" class="sidebar">
         <h2 class="bold section-title">Stuff Right</h2>
         <div class="white-box">
           <p>Right</p>
         </div>
       </section>
-    </div>
-    <!--Close three-column-grid-->
+    </div> -->
+    <!-- Close three-column-grid --> -->
 
-    <footer><small>footer</small></footer>
+    <footer><small>&copy;2019 Hochheiser & Wyandt</small></footer>
   </main>
 </body>
 

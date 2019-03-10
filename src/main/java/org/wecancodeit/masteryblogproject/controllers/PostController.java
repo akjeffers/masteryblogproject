@@ -42,7 +42,7 @@ public class PostController {
 		return "posts/allPosts";
 		
 	}
-
+	
 
 	@PostMapping("/")
 	public String postSubmit(String authorName, String title, String body, String progType, String tagName) {

@@ -1,13 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<html xmlns:th="https://thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Author Bios</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <title>Codrz</title>
 </head>
+
 <body>
-    <h1>Meet the Authors</h1>
 
- 
 
+    <!-- Header Area
+      #top-header (.header-branding, )
+      #navbar (.nav-list, .nav-list--item) -->
+
+    <header id="header">
+        <div id="top-header">
+            <h1 class="header-branding">Codrz</h1>
+
+        </div>
+        <!--Close top-header-->
+
+        <div id="navbar">
+            <ul class="nav-list">
+                <li><a class="nav-list--item" href="/">Home</a></li> <!-- Go Home -->
+                <li><a class="nav-list--item" href="/contact">Authors</a></li>
+                <!-- Add Author Tags to Access Posts w Author -->
+                <li><a class="nav-list--item" href="/post/submit">Submit Blog Post</a></li>
+                <!-- Go to page to submit a blog post -->
+                <li><a class="nav-list--item" href="/">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
+                <li><a class="nav-list--item" href="/">View Categories</a></li> <!-- Front End, Back-end -->
+
+
+            </ul>
+        </div>
+        <!--Close navbar-->
+    </header>
+    <main>
+
+        <body>
+            <section id="center-column">
+                <h2 class="bold section-title">Authors</h2>
+                <div class="column-reverse">
+                    <article class="white-box" th:each="type : ${authors}">
+                        <li><a th:text="${type.authorName}" th:href="@{|/author/${type.authorId|}"></a></li>l
+            </section>
+            </div>
+            <footer><small>&copy; 2019 Hochheiser & Wyandt</small></footer>
+    </main>
 </body>
+
 </html>
