@@ -44,7 +44,7 @@ public class PostController {
 		return "submit";
 		
 	}
-
+	
 
 	@PostMapping("/submit")
 	public String postSubmit(Author author, String title, String body, Category progType, Tag[] tagName) {
