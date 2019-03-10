@@ -63,7 +63,10 @@
           <ul th:each="type : ${categories}">
             <li><a th:text="${type.progType}" th:href="@{|/category/${type.categoryId}|}"></a></li>
           </ul>
-          <h2>Authors</h2>
+        </div>
+
+        <h2 class="bod section-title">Authors</h2>
+        <div class="white-box">
           <ul th:each="type : ${authors}">
             <li><a th:text="${type.authorName}" th:href="@{|/author/${type.authorId}|}"></a></li>
           </ul>
@@ -81,6 +84,7 @@
             <div class="two-column grid">
               <div class="grid--left">
                 <h3 th:text="|Authored by: ${post.author}|">Authored by: Jason Hochheiser</h3>
+                  <!-- <h4 th:text="|Topic: ${post.progType}|">Topic: Back-End</h4> -->
                 <h4 th:each="type : ${categories}" th:text="|Topic: ${type.progType}|"
                   th:href="@{|/category/${type.categoryId}|}">Back-End</h4>
                 <!-- <h3 th:text="${title}">Delicious IPA from Whylan</h3> -->
@@ -92,7 +96,7 @@
                   Read Blog Post</a>
               </div>
 
-              
+
             </div>
             <!-- Two Column Grid-->
             <div class="two-column article-footer">

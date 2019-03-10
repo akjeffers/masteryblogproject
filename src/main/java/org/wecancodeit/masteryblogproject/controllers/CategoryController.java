@@ -25,7 +25,7 @@ public class CategoryController {
 	@Resource
 	TagsRepository tags;
 	
-	@RequestMapping("")
+	@RequestMapping("/")
 	public String viewCategory(Model model) {
 	model.addAttribute("categories", categories.findAll());
 	return "/category";
@@ -33,8 +33,8 @@ public class CategoryController {
 }
 	@GetMapping("/{categoryId}")
 	public String findOneCategory (@PathVariable Long categoryId, Model model) {
-		model.addAttribute("category", categories.findById(categoryId).get());
 		model.addAttribute("categories", categories.findAll());
+		model.addAttribute("category", categories.findById(categoryId).get());
 		return "category";
 	}
 	

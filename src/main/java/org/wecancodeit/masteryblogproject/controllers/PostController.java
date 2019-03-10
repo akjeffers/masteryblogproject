@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.wecancodeit.masteryblogproject.models.Category;
 import org.wecancodeit.masteryblogproject.models.Post;
 import org.wecancodeit.masteryblogproject.models.Tag;
+
 import org.wecancodeit.masteryblogproject.models.Author;
 import org.wecancodeit.masteryblogproject.repositories.AuthorsRepository;
 import org.wecancodeit.masteryblogproject.repositories.CategoriesRepository;
@@ -71,10 +72,12 @@ public class PostController {
 		return "post";
 	}
 	@PostMapping("/{postId}")
-	public String postSubmit(@PathVariable Long tagId, Author author, String progType,String tagName) {
-		Author author1 = authors.findByAuthorName(author);
-		Category category = categories.findByProgType(progType);
-		Tag tag1 = tags.findByTagName(tagName);
+	public String tagSubmit(@PathVariable Long postId, String tagName) {
+		Post post = posts.findById(postId).get();
+//		Category category = categories.findByProgType(progType);
+		
+		Tag tag = tags.save(new Tag());
+		post.addTag(tag);
 		return "/post";
 	
 	}
