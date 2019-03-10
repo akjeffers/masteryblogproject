@@ -1,6 +1,7 @@
 package org.wecancodeit.masteryblogproject.models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -11,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 
 @Entity
 public class Post {
@@ -22,7 +23,7 @@ public class Post {
 	private Long postId;
 	
 	@ManyToMany
-	private List<Author> author;
+	private Collection<Author> authors;
 	
 	@ManyToMany
 	private Collection<Tag> tags;
@@ -35,8 +36,8 @@ public class Post {
 	
 	public Post() {}
 	
-	public Post(Author author, String title, String body, Category category, Tag ...tags) {
-		this.author = Arrays.asList(author);
+	public Post(Author authorName, String title, String body, Category category, Tag tags) {
+		this.authors = Arrays.asList(authorName);
 		this.title = title;
 		this.date = LocalDateTime.now();
 		this.body = body;
@@ -46,16 +47,16 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", author=" + author + ", tag=" + tags + ", title=" + title + ", date=" + date
-				+ ", body=" + body + ", category=" + category + "]";
+		return "title= " + title + "author=" + authors + ", date=" + date + ", category=" + category + 
+				", body=" + body + ", tag=" + tags;
 	}
-
+	
 	public Long getPostId() {
 		return postId;
 	}
 
-	public List<Author> getAuthor() {
-		return author;
+	public Collection<Author> getAuthors() {
+		return authors;
 	}
 
 	public String getTitle() {
@@ -69,13 +70,21 @@ public class Post {
 	public String getBody() {
 		return body;
 	}
-	public Collection<Tag> getTag() {
+	public Collection<Tag> getTags() {
 		return tags;
 	}
-	public void addTag(Tag tag) {
+	public void addTagToTags(Tag tag) {
+		
 		tags.add(tag);
 		
+		
+	}
 	
+	public void addAuthorToAuthors(Author author) {
+		
+		authors.add(author);
+		
+		
 	}
 	
 

@@ -18,9 +18,9 @@ public class Tag {
 	
 	public Tag() {}
 	
-	public Tag(String stringOfTags, Post post) {
+	public Tag(String stringOfTags) {
 		this.tagName = stringOfTags;
-		this.posts = (Collection<Post>) post;
+		this.posts = (Collection<Post>) posts;
 	
 	}
 
@@ -42,7 +42,7 @@ public class Tag {
 
 	@Override
 	public String toString() {
-		return "Tag [id=" + id + ", tagName=" + tagName + "]";
+		return "tagName=" + tagName + "posts= " + posts;
 	}
 
 	

@@ -13,18 +13,19 @@ public class Author {
 	@GeneratedValue
 	private Long authorId;
 	private String authorName;
-	@ManyToMany(mappedBy="author")
+	@ManyToMany(mappedBy="authors")
 	private Collection<Post> posts;
 	
 	public Author () {}
 	
-	public Author(String authorNames) {
-		this.authorName = authorNames;
+	public Author(String authorName) {
+		this.authorName = authorName;
+		this.posts = (Collection<Post>) posts;
 	}
 
 	@Override
 	public String toString() {
-		return "Author [authorId=" + authorId + ", authorName=" + authorName + "]";
+		return "authorName=" + authorName + "posts=" + posts;
 	}
 
 	public Long getAuthorId() {

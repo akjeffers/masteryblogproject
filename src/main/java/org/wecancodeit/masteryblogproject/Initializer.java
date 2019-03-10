@@ -31,12 +31,12 @@ public class Initializer implements CommandLineRunner {
 		Category backEnd = categories.save(new Category("Back End Programming"));
 		Category fullStack = categories.save(new Category("Full-Stack Development"));
 		Author author1 = authors.save(new Author("Jason Hochheiser"));
-		Author author2 = authors.save(new Author( "Alicia Jeffers"));
-		Tag tag1 = tags.save(new Tag("HTML", null));
-		Tag tag2 = tags.save(new Tag("CSS", null));
-		Tag tag3 = tags.save(new Tag("JavaScript", null));
-		Tag tag4 = tags.save(new Tag("Java", null));
-		Post post1 = posts.save(new Post(author1, "First Programming Blog", 
+		Author author2 = authors.save(new Author("Alicia Jeffers"));
+		Tag tag1 = tags.save(new Tag("HTML"));
+		Tag tag2 = tags.save(new Tag("CSS"));
+		Tag tag3 = tags.save(new Tag("JavaScript"));
+		Tag tag4 = tags.save(new Tag("Java"));
+		Post post1 = posts.save(new Post(author1 , "First Programming Blog", 
 				"This is the body of my first blog", fullStack, tag3));
 		
 		Post post2 = posts.save(new Post(author2, "Another Programming Blog", 
