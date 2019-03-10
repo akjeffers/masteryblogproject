@@ -22,10 +22,10 @@ public class TagController {
 	@Resource
 	TagsRepository tags;
 	
-	@GetMapping ("/tag/{tagId}")
-	public String singleTag(@PathVariable Long tagId, Model model) {
+	@GetMapping ("/{id}")
+	public String singleTag(@PathVariable Long id, Model model) {
 		model.addAttribute("post", posts.findAll());
-		model.addAttribute("tag", tags.findById(tagId).get());
-		return "tag";
+		model.addAttribute("tag", tags.findById(id).get());
+		return "/tag";
 	}
 }
