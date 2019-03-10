@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <html xmlns:th="https://thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +29,8 @@
       <ul class="nav-list">
         <li><a class="nav-list--item" href="/">Home</a></li> <!-- Go Home -->
         <li><a class="nav-list--item" href="/contact">Authors</a></li> <!-- Add Author Tags to Access Posts w Author -->
-        <li><a class="nav-list--item" href="/post/submit">Submit Blog Post</a></li> <!-- Go to page to submit a blog post -->
+        <li><a class="nav-list--item" href="/post/submit">Submit Blog Post</a></li>
+        <!-- Go to page to submit a blog post -->
         <li><a class="nav-list--item" href="/">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
         <li><a class="nav-list--item" href="/">View Categories</a></li> <!-- Front End, Back-end -->
 
@@ -43,7 +45,7 @@
       #left-column ( Categories -- Front-end, Back-end, Full Stack )
       #center-column ( Most Recent Blog Posts )
       #right-column ( Tag List; Java, CSS, HTML5, Spring)-->
-   <!-- <div class="three-column grid">
+    <!-- <div class="three-column grid">
       <section id="left-column" class="sidebar">
         <h2 class="bold section-title">Categories</h2>
         <div class="white-box">
@@ -54,44 +56,43 @@
       </section>
       <!- Close left-column-->
 
-      <div class="three-column grid">
-        <section id="left-column" class="sidebar">
-          <h2 class="bold section-title">Blog Topics</h2>
-          <div class="white-box">
-            <ul th:each="type : ${categories}">
-              <li><a th:text="${type.progType}" th:href="@{|/category/${type.categoryId}|}"></a></li>
-            </ul>
+    <div class="three-column grid">
+      <section id="left-column" class="sidebar">
+        <h2 class="bold section-title">Blog Topics</h2>
+        <div class="white-box">
+          <ul th:each="type : ${categories}">
+            <li><a th:text="${type.progType}" th:href="@{|/category/${type.categoryId}|}"></a></li>
+          </ul>
           <h2>Authors</h2>
-            <ul th:each="type : ${authors}">
-              <li><a th:text="${type.authorName}" th:href="@{|/author/${type.authorId}|}"></a></li>
-            </ul>
-          </div>
-        </section>
+          <ul th:each="type : ${authors}">
+            <li><a th:text="${type.authorName}" th:href="@{|/author/${type.authorId}|}"></a></li>
+          </ul>
+        </div>
+      </section>
 
 
-       <section id="center-column">
+      <section id="center-column">
         <h2 class="bold section-title">Latest Posts</h2>
         <div class="column-reverse">
           <article class="white-box" th:each="post : ${posts}">
 
 
-             <h2 class="article-header" th:text="${post.title}">Beginner Steps in Java </h2>
+            <h2 class="article-header" th:text="${post.title}">Beginner Steps in Java </h2>
             <div class="two-column grid">
               <div class="grid--left">
                 <h3 th:text="|Authored by: ${post.author}|">Authored by: Jason Hochheiser</h3>
-                  <h4 th:each="type : ${categories}" th:text="|Topic: ${type.progType}|" th:href="@{|/category/${type.categoryId}|}">Back-End</h4>
-                    <!-- <h3 th:text="${title}">Delicious IPA from Whylan</h3> -->
-                    <!-- <ul th:each="type : ${categories}">
+                <h4 th:each="type : ${categories}" th:text="|Topic: ${type.progType}|"
+                  th:href="@{|/category/${type.categoryId}|}">Back-End</h4>
+                <!-- <h3 th:text="${title}">Delicious IPA from Whylan</h3> -->
+                <!-- <ul th:each="type : ${categories}">
                       <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>
                     </ul> -->
 
-                    <a class="article-subheader" th:href="@{|post/${post.postId}|}">
-                      Read Blog Post</a>
+                <a class="article-subheader" th:href="@{|post/${post.postId}|}">
+                  Read Blog Post</a>
               </div>
 
-              <div class="grid--right">
-                <figure class="tags"> <!-- Build out tags on right side column *List -->
-              </div>
+              
             </div>
             <!-- Two Column Grid-->
             <div class="two-column article-footer">
@@ -101,8 +102,8 @@
               <!-- <form th:action="@{/deletePost}" method="POST">
                 <input type="hidden" name="postId" th:value="${post.postId}">
                 <button class="fading-button" type="submit">Delete</button> -->
-                <!-- <img src="/images/delete-icon.svg" alt="submit" /> -->
-                <!-- <small>Delete the post</small> -->
+              <!-- <img src="/images/delete-icon.svg" alt="submit" /> -->
+              <!-- <small>Delete the post</small> -->
               </form>
             </div>
 
@@ -110,16 +111,16 @@
         </div>
       </section>
       <!--Close center-column-->
-   	
-    <section id="right-column" class="sidebar">
-      <h3 class="bold section-title">Programming Tags</h3>
-      <div class="white-box">
-        <ul th:each="type : ${tags}">
-          <li><a th:text="${type.tagName}" th:href="@{|/tag/${type.id}|}"></a></li>
-        </ul>
-      </div>
-      
-       
+
+      <section id="right-column" class="sidebar">
+        <h3 class="bold section-title">Programming Tags</h3>
+        <div class="white-box">
+          <ul th:each="type : ${tags}">
+            <li><a th:text="${type.tagName}" th:href="@{|/tag/${type.id}|}"></a></li>
+          </ul>
+        </div>
+
+
       </section>
     </div>
     <!-- Close three-column-grid -->
