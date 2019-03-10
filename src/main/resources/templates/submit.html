@@ -44,15 +44,7 @@
         #left-column ( Categories -- Front-end, Back-end, Full Stack )
       #center-column ( Most Recent Blog Posts )
       #right-column ( Tag List; Java, CSS, HTML5, Spring)-->
-    <div class="three-column grid">
-      <section id="left-column" class="sidebar">
-        <h2 class="bold section-title">Categories</h2>
-        <div class="white-box"> -->
-           <ul th:each="type : ${categories}">
-            <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>
-          </ul>
-        </div>
-      </section>
+    
 
       <!--Close left-column-->
       <section id="center-column">
