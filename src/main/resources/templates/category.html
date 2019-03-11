@@ -41,20 +41,9 @@
   </header>
 
   <main>
-    <!--MAIN BODY THREE COLUMN GRID
-      #left-column ( Categories -- Front-end, Back-end, Full Stack )
-      #center-column ( Most Recent Blog Posts )
-      #right-column ( Tag List; Java, CSS, HTML5, Spring)-->
-    <!-- <div class="three-column grid">
-      <section id="left-column" class="sidebar">
-        <h2 class="bold section-title">Categories</h2>
-        <div class="white-box"> -->
-          <!-- <ul th:each="type : ${categories}">
-            <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>
-          </ul>
-        </div> -->
-      <!-- </section> -->
+    <!--MAIN BODY THREE COLUMN GRID -->
 
+  
 
     <div class="three-column grid">
       <section id="left-column" class="sidebar">
@@ -86,14 +75,7 @@
                <!-- <div th:each="Author: ${post.authors}"><h3 th:text="|Authored by: ${Author.authorName}|">Authored by: Jason Hochheiser</h3></div> -->
                <ul th:each="post : ${category.posts}">
                        <li><a th:href="@{|/post/${post.postId}|}" th:text="|${post.postId}, by ${post.authorName}|"></a></li>
-               </ul>  <!-- <h4 th:text="|Topic: ${post.progType}|">Topic: Back-End</h4> -->
-
-               <!-- <h3 th:text="|Topics by: ${post.category.progType}|">Front-End Programming</h3> -->
-
-                <!-- <h3 th:text="${title}">Delicious IPA from Whylan</h3> -->
-                <!-- <ul th:each="type : ${categories}">
-                      <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>
-                    </ul> -->
+               </ul> 
 
                 <a class="article-subheader" th:href="@{|post/${post.postId}|}">
                   Read Blog Post</a>
@@ -105,12 +87,6 @@
             <div class="two-column article-footer">
 
 
-              <!--Delete Posts -->
-              <!-- <form th:action="@{/deletePost}" method="POST">
-                <input type="hidden" name="postId" th:value="${post.postId}">
-                <button class="fading-button" type="submit">Delete</button> -->
-              <!-- <img src="/images/delete-icon.svg" alt="submit" /> -->
-              <!-- <small>Delete the post</small> -->
               </form>
             </div>
 
