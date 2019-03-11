@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <title>Codrz</title>
+</head>
+
+<body>
+
+
+  <!-- Header Area
+      #top-header (.header-branding, )
+      #navbar (.nav-list, .nav-list--item) -->
+
+  <header id="header">
+    <div id="top-header">
+      <h1 class="header-branding">Codrz</h1>
+
+    </div>
+    <!--Close top-header-->
+
+    <div id="navbar">
+      <ul class="nav-list">
+          <li><a class="nav-list--item" href="/">Home</a></li> <!-- Go Home -->
+          <li><a class="nav-list--item" href="/authors/">Authors</a></li> <!-- Add Author Tags to Access Posts w Author -->
+          <li><a class="nav-list--item" href="/posts/submit/">Submit Blog Post</a></li>
+          <!-- Go to page to submit a blog post -->
+          <li><a class="nav-list--item" href="/tags/">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
+          <li><a class="nav-list--item" href="/categories/">View Categories</a></li> <!-- Front End, Back-end -->
+          <li><a class="nav-list--item" href="/posts/">View All Posts</a></li> <!-- Front End, Back-end -->
+
+      </ul>
+    </div>
+    <!--Close navbar-->
+  </header>
+
+  <main>
+    <!--MAIN BODY THREE COLUMN GRID -->
+
+  
+
+    <div class="three-column grid">
+      <section id="left-column" class="sidebar">
+        <h2 class="bold section-title">Blog Topics</h2>
+        <div class="white-box">
+          <ul th:each="type : ${categories}">
+            <li><a th:text="${type.progType}" th:href="@{|/category/${type.categoryId}|}"></a></li>
+          </ul>
+        </div>
+
+        <h2 class="bod section-title">Authors</h2>
+        <div class="white-box">
+          <ul th:each="type : ${authors}">
+            <li><a th:text="${type.authorName}" th:href="@{|/author/${type.authorId}|}"></a></li>
+          </ul>
+        </div>
+      </section>
+
+
+      <section id="center-column">
+        <h2 class="bold section-title">Latest Posts</h2>
+        <div class="column-reverse">
+          <article class="white-box" th:each="post : ${posts}">
+            <h2 class="bold section-title" th:text="|${category.categoryId} List|">header of topics</h2>
+
+            <h2 class="article-header" th:text="${post.postId}"> Beginner Steps in Java </h2>
+            <div class="two-column grid">
+              <div class="grid--left">
+               <!-- <div th:each="Author: ${post.authors}"><h3 th:text="|Authored by: ${Author.authorName}|">Authored by: Jason Hochheiser</h3></div> -->
+               <ul th:each="post : ${category.posts}">
+                       <li><a th:href="@{|/post/${post.postId}|}" th:text="|${post.postId}, by ${post.authorName}|"></a></li>
+               </ul> 
+
+                <a class="article-subheader" th:href="@{|post/${post.postId}|}">
+                  Read Blog Post</a>
+              </div>
+
+
+            </div>
+            <!-- Two Column Grid-->
+            <div class="two-column article-footer">
+
+
+              </form>
+            </div>
+
+          </article>
+        </div>
+      </section>
+      <!--Close center-column-->
+
+      <section id="right-column" class="sidebar">
+        <h3 class="bold section-title">Programming Tags</h3>
+        <div class="white-box">
+          <ul th:each="type : ${tags}">
+            <li><a th:text="${type.tagName}" th:href="@{|/tag/${type.id}|}"></a></li>
+          </ul>
+        </div>
+
+
+      </section>
+    </div>
+    <!-- Close three-column-grid -->
+
+    <footer><small>&copy; 2019 Hochheiser & Wyandt</small></footer>
+  </main>
+</body>
+
+</html>

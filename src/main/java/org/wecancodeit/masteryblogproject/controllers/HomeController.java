@@ -1,4 +1,4 @@
-package org.wecancodeit.masteryproject.controllers;
+package org.wecancodeit.masteryblogproject.controllers;
 
 import javax.annotation.Resource;
 
@@ -16,7 +16,7 @@ import org.wecancodeit.masteryblogproject.repositories.TagsRepository;
 
 @Controller
 public class HomeController {
-	
+
 	@Resource
 	PostsRepository posts;
 	@Resource
@@ -25,7 +25,7 @@ public class HomeController {
 	CategoriesRepository categories;
 	@Resource
 	TagsRepository tags;
-	
+
 	@RequestMapping("/")
 	public String home(Model model) {
 		model.addAttribute("posts", posts.findAll());
@@ -34,24 +34,13 @@ public class HomeController {
 		model.addAttribute("tags", tags.findAll());
 		return "home";
 	}
-	@GetMapping("/{categoryId}")
-	public String progOfSelectedType(@PathVariable Long categoryId, Model model) {
-		model.addAttribute("categories", categories.findAll());
-		return "category";
-	}
-	@GetMapping("/{authorId}")
-	public String postsBySelectedAuthor(@PathVariable Long authorId, Model model) {
-		model.addAttribute("authors", authors.findAll());
-		return "author";
-	}
-	@GetMapping("/{tagId}")
-	public String postsBySelectedTag(@PathVariable Long tagId, Model model) {
-		model.addAttribute("tags", tags.findAll());
-		return "tag";
-	}
+
+	
+
+
 	@PostMapping("/deletePost")
 	public String deletePost(Long postId) {
-	Post post = (Post) posts.findById(postId).get();
+		Post post = (Post) posts.findById(postId).get();
 		posts.deleteById(postId);
 		return "redirect:/";
 	}

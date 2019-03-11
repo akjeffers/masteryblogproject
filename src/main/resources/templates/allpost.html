@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <title>Codrz</title>
+</head>
+
+<body>
+
+
+  <!-- Header Area
+      #top-header (.header-branding, )
+      #navbar (.nav-list, .nav-list--item) -->
+
+  <header id="header">
+    <div id="top-header">
+      <h1 class="header-branding">Codrz</h1>
+
+    </div>
+    <!--Close top-header-->
+
+    <div id="navbar">
+      <ul class="nav-list">
+            <li><a class="nav-list--item" href="/">Home</a></li> <!-- Go Home -->
+            <li><a class="nav-list--item" href="/authors/">Authors</a></li> <!-- Add Author Tags to Access Posts w Author -->
+            <li><a class="nav-list--item" href="/posts/submit/">Submit Blog Post</a></li>
+            <!-- Go to page to submit a blog post -->
+            <li><a class="nav-list--item" href="/tags/">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
+            <li><a class="nav-list--item" href="/categories/">View Categories</a></li> <!-- Front End, Back-end -->
+            <li><a class="nav-list--item" href="/posts/">View All Posts</a></li> <!-- Front End, Back-end -->
+      </ul>
+    </div>
+    <!--Close navbar-->
+  </header>
+
+  <main>
+    <!--MAIN BODY THREE COLUMN GRID
+      #center-column ( All Posts ) -->
+     
+
+
+
+
+      <section id="center-column">
+        <h2 class="bold section-title">Latest Posts</h2>
+        <div class="column-reverse">
+          <article class="white-box" th:each="post : ${posts}">
+
+
+            <h2 class="article-header" th:text="${post.title}"> Beginner Steps in Java </h2>
+            <div class="two-column grid">
+              <div class="grid--left">
+               <div th:each="Author: ${post.authors}"><h3 th:text="|Authored by: ${Author.authorName}|">Authored by: Jason Hochheiser</h3></div>
+               <div th:each="Category: ${post.category}"><h3 th:text="|Topic: ${Category.progType}|">Front-End Programming</h3></div>
+                <a class="article-subheader" th:href="@{|/posts/${post.postId}|}"> 
+                  Read Blog Post</a>
+              </div>
+
+
+            </div>
+            <!-- Two Column Grid-->
+            
+
+          </article>
+        </div>
+      </section>
+      <!--Close center-column-->
+
+     
+    </div>
+    <!-- Close three-column-grid -->
+
+    <footer><small>&copy; 2019 Hochheiser & Wyandt</small></footer>
+  </main>
+</body>
+
+</html>

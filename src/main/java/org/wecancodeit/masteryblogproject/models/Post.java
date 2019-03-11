@@ -1,5 +1,7 @@
 package org.wecancodeit.masteryblogproject.models;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -10,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 
 @Entity
 public class Post {
@@ -21,23 +23,25 @@ public class Post {
 	private Long postId;
 	
 	@ManyToMany
-	private List<Author> author;
+	private Collection<Author> authors;
 	
 	@ManyToMany
 	private Collection<Tag> tags;
 	@Lob
 	private String title;
-	private String date;
+	private LocalDateTime date;
 	private String body;
 	@ManyToOne
 	private Category category;
 	
+	
+
 	public Post() {}
 	
-	public Post(Author author, String title, String date, String body, Category category, Tag ...tags) {
-		this.author = Arrays.asList(author);
+	public Post(Author authorName, String title, String body, Category category, Tag tags) {
+		this.authors = Arrays.asList(authorName);
 		this.title = title;
-		this.date = date;
+		this.date = LocalDateTime.now();
 		this.body = body;
 		this.category = category;
 		this.tags = Arrays.asList(tags);
@@ -45,36 +49,46 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", author=" + author + ", tag=" + tags + ", title=" + title + ", date=" + date
-				+ ", body=" + body + ", category=" + category + "]";
+		return "title= " + title + "author=" + authors + ", date=" + date + ", category=" + category + 
+				", body=" + body + ", tag=" + tags;
 	}
-
+	
 	public Long getPostId() {
 		return postId;
 	}
 
-	public List<Author> getAuthor() {
-		return author;
+	public Collection<Author> getAuthors() {
+		return authors;
 	}
 
 	public String getTitle() {
 		return title;
 	}
-
-	public String getDate() {
-		return date;
+	public Category getCategory() {
+		return category;
+	}
+	public LocalDateTime getDate() {
+		return LocalDateTime.now();
 	}
 
 	public String getBody() {
 		return body;
 	}
-	public Collection<Tag> getTag() {
+	public Collection<Tag> getTags() {
 		return tags;
 	}
-	public void addTag(Tag tag) {
-		tags.add(tag);
+	public void addTagToTags(Tag tag) {
+	ArrayList<Tag> tags = new ArrayList<Tag>(this.getTags());
+			tags.add(tag);
+			this.tags = tags;
 		
+	}
 	
+	public void addAuthorToAuthors(Author author) {
+	ArrayList<Author> authors = new ArrayList<Author>(this.getAuthors());	
+		authors.add(author);
+		this.authors = authors;
+		
 	}
 	
 
