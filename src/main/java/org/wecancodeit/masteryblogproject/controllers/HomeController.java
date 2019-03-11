@@ -35,28 +35,8 @@ public class HomeController {
 		return "home";
 	}
 
-	@GetMapping("/contact")
-	public String getContact() {
-		return "contact";
-	}
+	
 
-	@GetMapping("/{categoryId}")
-	public String postOfSelectedProgType(@PathVariable Long categoryId, Model model) {
-		model.addAttribute("posts", posts.findAll());
-		return "category";
-	}
-
-	@GetMapping("/{authorId}")
-	public String postsBySelectedAuthor(@PathVariable Long authorId, Model model) {
-		model.addAttribute("posts", posts.findAll());
-		return "author";
-	}
-
-	@GetMapping("/{tagId}")
-	public String postsBySelectedTag(@PathVariable Long tagId, Model model) {
-		model.addAttribute("posts", posts.findAll());
-		return "tag";
-	}
 
 	@PostMapping("/deletePost")
 	public String deletePost(Long postId) {

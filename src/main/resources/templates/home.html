@@ -28,11 +28,12 @@
     <div id="navbar">
       <ul class="nav-list">
         <li><a class="nav-list--item" href="/">Home</a></li> <!-- Go Home -->
-        <li><a class="nav-list--item" href="/contact">Authors</a></li> <!-- Add Author Tags to Access Posts w Author -->
-        <li><a class="nav-list--item" href="/post/submit">Submit Blog Post</a></li>
+        <li><a class="nav-list--item" href="/authors/">Authors</a></li> <!-- Add Author Tags to Access Posts w Author -->
+        <li><a class="nav-list--item" href="/posts/submit/">Submit Blog Post</a></li>
         <!-- Go to page to submit a blog post -->
-        <li><a class="nav-list--item" href="/tags">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
-        <li><a class="nav-list--item" href="/categories">View Categories</a></li> <!-- Front End, Back-end -->
+        <li><a class="nav-list--item" href="/tags/">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
+        <li><a class="nav-list--item" href="/categories/">View Categories</a></li> <!-- Front End, Back-end -->
+        <li><a class="nav-list--item" href="/posts/">View All Posts</a></li> <!-- Front End, Back-end -->
 
 
       </ul>
@@ -60,15 +61,15 @@
       <section id="left-column" class="sidebar">
         <h2 class="bold section-title">Blog Topics</h2>
         <div class="white-box">
-          <ul th:each="type : ${categories}">
-            <li><a th:text="${type.progType}" th:href="@{|/category/${type.categoryId}|}"></a></li>
+          <ul th:each="type : ${categories}"> <!-- Calling Model Attribute -->
+            <li><a th:text="${type.progType}" th:href="@{|/categories/${type.categoryId}|}"></a></li> <!-- Path -->
           </ul>
         </div>
 
         <h2 class="bod section-title">Authors</h2>
         <div class="white-box">
           <ul th:each="type : ${authors}">
-            <li><a th:text="${type.authorName}" th:href="@{|/author/${type.authorId}|}"></a></li>
+            <li><a th:text="${type.authorName}" th:href="@{|/authors/${type.authorId}|}"></a></li> <!-- Name of path -->
           </ul>
         </div>
       </section>
@@ -85,7 +86,7 @@
               <div class="grid--left">
                <div th:each="Author: ${post.authors}"><h3 th:text="|Authored by: ${Author.authorName}|">Authored by: Jason Hochheiser</h3></div>
                <div th:each="Category: ${post.category}"><h3 th:text="|Topic: ${Category.progType}|">Front-End Programming</h3></div>
-                <a class="article-subheader" th:href="@{|post/${post.postId}|}">
+                <a class="article-subheader" th:href="@{|posts/${post.postId}|}">
                   Read Blog Post</a>
               </div>
 
@@ -113,7 +114,7 @@
         <h3 class="bold section-title">Programming Tags</h3>
         <div class="white-box">
           <ul th:each="type : ${tags}">
-            <li><a th:text="${type.tagName}" th:href="@{|/tag/${type.id}|}"></a></li>
+            <li><a th:text="${type.tagName}" th:href="@{|/tags/${type.id}|}"></a></li>
           </ul>
         </div>
 

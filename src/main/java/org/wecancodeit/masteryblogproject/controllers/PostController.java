@@ -20,7 +20,7 @@ import org.wecancodeit.masteryblogproject.repositories.PostsRepository;
 import org.wecancodeit.masteryblogproject.repositories.TagsRepository;
 
 @Controller
-@RequestMapping("/post")
+@RequestMapping("/posts")
 public class PostController {
 
 	@Resource
@@ -32,14 +32,24 @@ public class PostController {
 	@Resource
 	TagsRepository tags;
 	
-	
-	@GetMapping("/submit")
+
+	@GetMapping("/")
 	public String allPosts(Model model) {
 		model.addAttribute("posts", posts.findAll());
 		model.addAttribute("authors", authors.findAll());
 		model.addAttribute("categories", categories.findAll());
 		model.addAttribute("tags", tags.findAll());
-		return "submit";
+		return "/allpost";
+		
+	}
+	
+	@GetMapping("/submit")
+	public String submitAPost(Model model) {
+		model.addAttribute("posts", posts.findAll());
+		model.addAttribute("authors", authors.findAll());
+		model.addAttribute("categories", categories.findAll());
+		model.addAttribute("tags", tags.findAll());
+		return "/submit";
 		
 	}
 	
@@ -66,7 +76,7 @@ public class PostController {
 		} else {
 			throw new Exception("Post does not exist");
 		}
-		return "post";
+		return "/post";
 		
 	}
 	@PostMapping("/{postId}")

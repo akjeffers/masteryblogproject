@@ -35,9 +35,7 @@ public class Author {
 	public String getAuthorName() {
 		return authorName;
 	}
-	public String getAuthorNames() {
-		return authorName;
-	}
+	
 	public Collection<Post> getPosts() {
 		return posts;
 	}

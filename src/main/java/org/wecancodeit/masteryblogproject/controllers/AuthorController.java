@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.wecancodeit.masteryblogproject.models.Author;
+import org.wecancodeit.masteryblogproject.models.Category;
+import org.wecancodeit.masteryblogproject.models.Post;
+import org.wecancodeit.masteryblogproject.models.Tag;
 import org.wecancodeit.masteryblogproject.repositories.AuthorsRepository;
 import org.wecancodeit.masteryblogproject.repositories.CategoriesRepository;
 import org.wecancodeit.masteryblogproject.repositories.PostsRepository;
@@ -32,10 +35,32 @@ public class AuthorController {
 	@RequestMapping("/")
 	public String viewAuthors(Model model) {
 	model.addAttribute("authors",authors.findAll());
-	return "/authors";
+	return "authors";
 	
-}
-	@GetMapping("/author/{authorId}")
+
+	}
+	
+	@GetMapping("/addauthor")
+	public String addAuthor(Model model) {
+		model.addAttribute("posts", posts.findAll());
+		model.addAttribute("authors", authors.findAll());
+		model.addAttribute("categories", categories.findAll());
+		model.addAttribute("tags", tags.findAll());
+		return "/addauthor";
+		
+	}
+
+	
+
+	@PostMapping("/addauthor")
+	public String postSubmit(String authorName) {
+	
+		authors.save(new Author(authorName));
+		return "redirect:/";
+
+	}
+
+	@GetMapping("/{authorId}")
 	public String getAuthor(@PathVariable Long authorId, Model model) throws Exception {
 		Optional<Author> author = authors.findById(authorId);
 		if (author.isPresent()) {
@@ -44,7 +69,7 @@ public class AuthorController {
 			throw new Exception("Author does not exist");
 		}
 
-		return "/authors/singleAuthor";
+		return "/singleauthor";
 
 	}
 	@PostMapping("/")

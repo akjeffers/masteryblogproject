@@ -26,12 +26,14 @@
 
     <div id="navbar">
       <ul class="nav-list">
-        <li><a class="nav-list--item" href="/">Home</a></li> <!-- Go Home -->
-        <li><a class="nav-list--item" href="/contact">Authors</a></li> <!-- Add Author Tags to Access Posts w Author -->
-        <li><a class="nav-list--item" href="/post/submit">Submit Blog Post</a></li>
-        <!-- Go to page to submit a blog post -->
-        <li><a class="nav-list--item" href="/tags">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
-        <li><a class="nav-list--item" href="/categories">View Categories</a></li> <!-- Front End, Back-end -->
+          <li><a class="nav-list--item" href="/">Home</a></li> <!-- Go Home -->
+          <li><a class="nav-list--item" href="/authors/">Authors</a></li> <!-- Add Author Tags to Access Posts w Author -->
+          <li><a class="nav-list--item" href="/posts/submit/">Submit Blog Post</a></li>
+          <!-- Go to page to submit a blog post -->
+          <li><a class="nav-list--item" href="/tags/">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
+          <li><a class="nav-list--item" href="/categories/">View Categories</a></li> <!-- Front End, Back-end -->
+          <li><a class="nav-list--item" href="/posts/">View All Posts</a></li> <!-- Front End, Back-end -->
+  
 
 
       </ul>
@@ -51,7 +53,7 @@
         <h2 class="bold section-title">Submit a Blog</h2>
         <div class="column-reverse">
           <article class="white-box">
-        <form class="form" action="/post/submit" method="post">
+        <form class="form" action="/posts/submit" method="post">
            <fieldset class="field-set">
                Title: <input type="text" name="title" /> <br />
                Body: <input type="text" name="body" /> <br />

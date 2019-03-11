@@ -17,7 +17,7 @@ import org.wecancodeit.masteryblogproject.repositories.PostsRepository;
 import org.wecancodeit.masteryblogproject.repositories.TagsRepository;
 
 @Controller
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryController {
 	
 	@Resource
