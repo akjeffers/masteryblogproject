@@ -17,7 +17,7 @@ import org.wecancodeit.masteryblogproject.repositories.PostsRepository;
 import org.wecancodeit.masteryblogproject.repositories.TagsRepository;
 
 @Controller
-@RequestMapping("/categories")
+@RequestMapping("/category")
 public class CategoryController {
 	
 	@Resource
@@ -29,10 +29,10 @@ public class CategoryController {
 	@Resource
 	TagsRepository tags;
 	
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String viewCategories(Model model) {
 	model.addAttribute("categories", categories.findAll());
-	return "/categories/allCategories";
+	return "/category";
 	
 }
 	@GetMapping("/category/{categoryId}")
@@ -40,7 +40,7 @@ public class CategoryController {
 		Optional<Category> category = categories.findById(categoryId);
 		
 		model.addAttribute("category", categories.findById(categoryId).get());
-		return "/categories/singleCategory";
+		return "/category/singleCategory";
 	}
 	@PostMapping("/")
 	public String addCategory(String progType) {
@@ -49,7 +49,7 @@ public class CategoryController {
 			categoryToAdd = categories.save(new Category(progType));
 		}
 		
-		return "redirect:/categories/";
+		return "redirect:/category/";
 		
 	}
 	

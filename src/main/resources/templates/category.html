@@ -53,7 +53,7 @@
             <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>
           </ul>
         </div> -->
-      </section>
+      <!-- </section> -->
 
 
     <div class="three-column grid">
@@ -78,15 +78,17 @@
         <h2 class="bold section-title">Latest Posts</h2>
         <div class="column-reverse">
           <article class="white-box" th:each="post : ${posts}">
+            <h2 class="bold section-title" th:text="|${category.categoryId} List|">header of topics</h2>
 
-
-            <h2 class="article-header" th:text="${post.title}"> Beginner Steps in Java </h2>
+            <h2 class="article-header" th:text="${post.postId}"> Beginner Steps in Java </h2>
             <div class="two-column grid">
               <div class="grid--left">
-               <div th:each="Author: ${post.authors}"><h3 th:text="|Authored by: ${Author.authorName}|">Authored by: Jason Hochheiser</h3></div>
-                  <!-- <h4 th:text="|Topic: ${post.progType}|">Topic: Back-End</h4> -->
+               <!-- <div th:each="Author: ${post.authors}"><h3 th:text="|Authored by: ${Author.authorName}|">Authored by: Jason Hochheiser</h3></div> -->
+               <ul th:each="post : ${category.posts}">
+                       <li><a th:href="@{|/post/${post.postId}|}" th:text="|${post.postId}, by ${post.authorName}|"></a></li>
+               </ul>  <!-- <h4 th:text="|Topic: ${post.progType}|">Topic: Back-End</h4> -->
 
-               <h3 th:text="|Topics by: ${post.category.progType}|">Front-End Programming</h3>
+               <!-- <h3 th:text="|Topics by: ${post.category.progType}|">Front-End Programming</h3> -->
 
                 <!-- <h3 th:text="${title}">Delicious IPA from Whylan</h3> -->
                 <!-- <ul th:each="type : ${categories}">

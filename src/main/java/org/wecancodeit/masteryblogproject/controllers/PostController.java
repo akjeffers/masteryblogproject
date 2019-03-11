@@ -56,6 +56,10 @@ public class PostController {
 
 	@GetMapping("/{postId}")
 	public String singlePost(@PathVariable Long postId, Model model) throws Exception {
+		model.addAttribute("posts", posts.findAll());
+		model.addAttribute("authors", authors.findAll());
+		model.addAttribute("categories", categories.findAll());
+		model.addAttribute("tags", tags.findAll());
 		Optional<Post> post = posts.findById(postId);
 		if(post.isPresent()) {
 			model.addAttribute("post", post.get());
@@ -66,7 +70,7 @@ public class PostController {
 		
 	}
 	@PostMapping("/{postId}")
-	public String tagSubmit(@PathVariable Long postId, String tagName) {
+	public String tagSubmit(@PathVariable Long postId, String tagName) {	
 		Post post = posts.findById(postId).get();
 		Tag tag = tags.save(new Tag());
 		post.addTagToTags(tag);

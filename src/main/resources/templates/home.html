@@ -84,15 +84,7 @@
             <div class="two-column grid">
               <div class="grid--left">
                <div th:each="Author: ${post.authors}"><h3 th:text="|Authored by: ${Author.authorName}|">Authored by: Jason Hochheiser</h3></div>
-                  <!-- <h4 th:text="|Topic: ${post.progType}|">Topic: Back-End</h4> -->
-
-               <h3 th:text="|Topics by: ${post.category.progType}|">Front-End Programming</h3>
-
-                <!-- <h3 th:text="${title}">Delicious IPA from Whylan</h3> -->
-                <!-- <ul th:each="type : ${categories}">
-                      <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>
-                    </ul> -->
-
+               <div th:each="Category: ${post.category}"><h3 th:text="|Topic: ${Category.progType}|">Front-End Programming</h3></div>
                 <a class="article-subheader" th:href="@{|post/${post.postId}|}">
                   Read Blog Post</a>
               </div>

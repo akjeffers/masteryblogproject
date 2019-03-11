@@ -78,16 +78,16 @@ public class Post {
 		return tags;
 	}
 	public void addTagToTags(Tag tag) {
-		
-		tags.add(tag);
-		
+	ArrayList<Tag> tags = new ArrayList<Tag>(this.getTags());
+			tags.add(tag);
+			this.tags = tags;
 		
 	}
 	
 	public void addAuthorToAuthors(Author author) {
-		
+	ArrayList<Author> authors = new ArrayList<Author>(this.getAuthors());	
 		authors.add(author);
-		
+		this.authors = authors;
 		
 	}
 	
