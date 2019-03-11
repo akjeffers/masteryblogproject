@@ -33,7 +33,7 @@ public class PostController {
 	TagsRepository tags;
 	
 
-	@GetMapping("/")
+	@GetMapping("/") // Home Page Gives You All of the Posts 
 	public String allPosts(Model model) {
 		model.addAttribute("posts", posts.findAll());
 		model.addAttribute("authors", authors.findAll());
@@ -43,7 +43,7 @@ public class PostController {
 		
 	}
 	
-	@GetMapping("/submit")
+	@GetMapping("/submit") // Add a function to add 
 	public String submitAPost(Model model) {
 		model.addAttribute("posts", posts.findAll());
 		model.addAttribute("authors", authors.findAll());
@@ -54,7 +54,7 @@ public class PostController {
 	}
 	
 
-	@PostMapping("/submit")
+	@PostMapping("/submit") // When you are adding something, you need a @GetMapping & @PostMapping (Show up together when you are doing an add) 
 	public String postSubmit(String authorName, String title, String body, String progType, String tagName) {
 		Category category = categories.findByProgType(progType);
 		Author author = authors.findByAuthorName(authorName);
@@ -64,7 +64,7 @@ public class PostController {
 
 	}
 
-	@GetMapping("/{postId}")
+	@GetMapping("/{postId}") // A Single Post -- Argument for the @GetMapping & focus on the return 
 	public String singlePost(@PathVariable Long postId, Model model) throws Exception {
 		model.addAttribute("posts", posts.findAll());
 		model.addAttribute("authors", authors.findAll());
@@ -79,7 +79,7 @@ public class PostController {
 		return "/post";
 		
 	}
-	@PostMapping("/{postId}")
+	@PostMapping("/{postId}") 
 	public String tagSubmit(@PathVariable Long postId, String tagName) {	
 		Post post = posts.findById(postId).get();
 		Tag tag = tags.save(new Tag());

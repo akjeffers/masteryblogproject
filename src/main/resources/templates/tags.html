@@ -27,14 +27,13 @@
 
     <div id="navbar">
       <ul class="nav-list">
-        <li><a class="nav-list--item" href="/">Home</a></li> <!-- Go Home -->
-        <li><a class="nav-list--item" href="/contact">Authors</a></li> <!-- Add Author Tags to Access Posts w Author -->
-        <li><a class="nav-list--item" href="/post/submit">Submit Blog Post</a></li>
-        <!-- Go to page to submit a blog post -->
-        <li><a class="nav-list--item" href="/">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
-        <li><a class="nav-list--item" href="/">View Categories</a></li> <!-- Front End, Back-end -->
-
-
+          <li><a class="nav-list--item" href="/">Home</a></li> <!-- Go Home -->
+          <li><a class="nav-list--item" href="/authors/">Authors</a></li> <!-- Add Author Tags to Access Posts w Author -->
+          <li><a class="nav-list--item" href="/posts/submit/">Submit Blog Post</a></li>
+          <!-- Go to page to submit a blog post -->
+          <li><a class="nav-list--item" href="/tags/">View All Tags</a></li> <!-- CSS, HTML, Java, JavaScript -->
+          <li><a class="nav-list--item" href="/categories/">View Categories</a></li> <!-- Front End, Back-end -->
+          <li><a class="nav-list--item" href="/posts/">View All Posts</a></li> <!-- Front End, Back-end -->
       </ul>
     </div>
     <!--Close navbar-->
@@ -45,77 +44,17 @@
       #left-column ( Categories -- Front-end, Back-end, Full Stack )
       #center-column ( Most Recent Blog Posts )
       #right-column ( Tag List; Java, CSS, HTML5, Spring)-->
-    <!-- <div class="three-column grid">
-      <section id="left-column" class="sidebar">
-        <h2 class="bold section-title">Categories</h2>
-        <div class="white-box"> -->
-          <!-- <ul th:each="type : ${categories}">
-            <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>
-          </ul> 
-        </div> -->
+ 
       </section>
   
 
     <div class="three-column grid">
-      <section id="left-column" class="sidebar">
-        <h2 class="bold section-title">Blog Topics</h2>
-        <div class="white-box">
-          <ul th:each="type : ${categories}">
-            <li><a th:text="${type.progType}" th:href="@{|/category/${type.categoryId}|}"></a></li>
-          </ul>
-        </div>
-
-        <h2 class="bod section-title">Authors</h2>
-        <div class="white-box">
-          <ul th:each="type : ${authors}">
-            <li><a th:text="${type.authorName}" th:href="@{|/author/${type.authorId}|}"></a></li>
-          </ul>
-        </div>
-      </section>
-
-
-      <section id="center-column">
-        <h2 class="bold section-title">Latest Posts</h2>
-        <div class="column-reverse">
-          <article class="white-box" th:each="post : ${posts}">
-
-
-            <h2 class="article-header" th:text="${post.title}">Beginner Steps in Java </h2>
-            <div class="two-column grid">
-              <div class="grid--left">
-                <h3 th:text="|Authored by: ${post.author}|">Authored by: Jason Hochheiser</h3>
-                  <!-- <h4 th:text="|Topic: ${post.progType}|">Topic: Back-End</h4> -->
-                <h4 th:each="type : ${categories}" th:text="|Topic: ${type.progType}|"
-                  th:href="@{|/category/${type.categoryId}|}">Back-End</h4>
-                <!-- <h3 th:text="${title}">Delicious IPA from Whylan</h3> -->
-                <!-- <ul th:each="type : ${categories}">
-                      <li><a th:text="${type.category}" th:href="@{|/category/${type.categoryId}|}"></a></li>
-                    </ul> -->
-
-                <a class="article-subheader" th:href="@{|post/${post.postId}|}">
-                  Read Blog Post</a>
-              </div>
-
-
-            </div>
-            <!-- Two Column Grid-->
-            <div class="two-column article-footer">
-
-
-            
-              </form>
-            </div>
-
-          </article>
-        </div>
-      </section>
-      <!--Close center-column-->
-
+      
       <section id="right-column" class="sidebar">
         <h3 class="bold section-title">Programming Tags</h3>
         <div class="white-box">
           <ul th:each="type : ${tags}">
-            <li><a th:text="${type.tagName}" th:href="@{|/tag/${type.id}|}"></a></li>
+            <li><a th:text="${type.tagName}" th:href="@{|/tags/${type.id}|}"></a></li>
           </ul>
         </div>
 
